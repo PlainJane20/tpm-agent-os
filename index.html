@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tpm-agent-os — A Multi-Agent Operating Model for Technical Program Management</title>
+    <meta name="description" content="Six Claude agents modeling a Staff TPM's operating model end to end: ambiguous-brief framing, parallel architectural-risk lensing, a build-vs-buy decision panel, RAG/OKR status, redirect-or-kill calls, and auto-generated mentoring playbooks.">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">tpm-agent-os</div>
+            <ul class="nav-menu">
+                <li><a href="#why" class="nav-link">Why</a></li>
+                <li><a href="#architecture" class="nav-link">Architecture</a></li>
+                <li><a href="#example" class="nav-link">Example Run</a></li>
+                <li><a href="#quickstart" class="nav-link">Quickstart</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <span class="sun">☀️</span>
+                <span class="moon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content animate-fade-up">
+            <div class="eyebrow"><span class="dot"></span> 6 agents · tested offline · MIT licensed</div>
+            <h1 class="hero-title">tpm-agent-os</h1>
+            <h2 class="hero-subtitle">A multi-agent operating model for technical program management, built on Claude.</h2>
+            <p class="hero-description">
+                Feed it one ambiguous, high-risk program brief. It runs the same operating model a
+                Staff TPM runs by hand — frame it, map the cross-domain risk, force a build-vs-buy
+                call, synthesize a status report, decide whether to keep going or pull the plug — and
+                it can run several of those concurrently, because real programs don't queue up one at a time.
+            </p>
+            <div class="hero-buttons">
+                <a href="#example" class="btn btn-primary">See a Real Run →</a>
+                <a href="ARCHITECTURE.md" class="btn btn-secondary">Read the Design Rationale</a>
+            </div>
+            <div class="hero-stack">
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">Claude Opus 5</span>
+                <span class="stack-tag">Claude Sonnet 5</span>
+                <span class="stack-tag">asyncio</span>
+                <span class="stack-tag">Pydantic</span>
+                <span class="stack-tag">pytest</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why -->
+    <section id="why" class="why-section">
+        <div class="container">
+            <div class="section-eyebrow animate-on-scroll">Why this exists</div>
+            <h2 class="section-title animate-on-scroll">Six agents, six Staff-level competencies</h2>
+            <p class="section-subtitle animate-on-scroll">
+                Every Staff/Principal TPM role is, underneath the title, asking for the same
+                operating model: take something ambiguous, impose structure on it fast, catch the
+                cross-team risk before it becomes an incident, make the build-vs-buy and kill/redirect
+                calls explicitly instead of by default, and teach the next TPM how you did it. Each
+                agent below exists because it maps to one of those recurring competencies — not
+                because it made a tidy demo.
+            </p>
+            <div class="competency-grid animate-on-scroll">
+                <div class="competency-card" style="--card-accent: var(--gradient-1)">
+                    <div class="competency-number">01 · Framing</div>
+                    <h3>Owning ambiguity end-to-end</h3>
+                    <p>Turns an underspecified brief into a structured charter — explicit scope, real stakeholders, and the open questions nobody has answered yet, surfaced rather than papered over.</p>
+                    <span class="tier-badge judgment">Opus · judgment tier</span>
+                </div>
+                <div class="competency-card" style="--card-accent: var(--gradient-2)">
+                    <div class="competency-number">02 · Risk Mapper</div>
+                    <h3>Acting as a technical integrator</h3>
+                    <p>Two independent lenses — dependency/SPOF and compliance-boundary — run in parallel, then a judge synthesizes the architectural risk matrix without hiding disagreement.</p>
+                    <span class="tier-badge lens">Sonnet lenses + Opus judge</span>
+                </div>
+                <div class="competency-card" style="--card-accent: var(--gradient-3)">
+                    <div class="competency-number">03 · Decision Panel</div>
+                    <h3>Making the build-vs-buy call</h3>
+                    <p>Three committed lenses — build, buy, TCO skeptic — argue in parallel; a judge decides and names the dissenting view instead of quietly averaging it away.</p>
+                    <span class="tier-badge lens">Sonnet lenses + Opus judge</span>
+                </div>
+                <div class="competency-card" style="--card-accent: var(--gradient-1)">
+                    <div class="competency-number">04 · Status Synthesizer</div>
+                    <h3>Keeping roadmap and OKR alignment honest</h3>
+                    <p>Produces an executive-ready RAG status that reflects real risk, not effort expended, and names every OKR the program is at risk of missing — even the inconvenient ones.</p>
+                    <span class="tier-badge judgment">Opus · judgment tier</span>
+                </div>
+                <div class="competency-card" style="--card-accent: var(--gradient-2)">
+                    <div class="competency-number">05 · Redirect / Kill</div>
+                    <h3>Having the authority to say stop</h3>
+                    <p>Decides continue, redirect resources, or shut down — and doesn't default to "continue" out of social comfort. The tradeoff has to be named, not implied.</p>
+                    <span class="tier-badge judgment">Opus · judgment tier</span>
+                </div>
+                <div class="competency-card" style="--card-accent: var(--gradient-3)">
+                    <div class="competency-number">06 · Playbook</div>
+                    <h3>Mentoring the next TPM</h3>
+                    <p>Every run auto-generates a teachable case study — turning "I mentor TPMs" from a resume line into a growing, inspectable corpus a new hire could actually read.</p>
+                    <span class="tier-badge lens">Sonnet · distillation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture" class="architecture-section">
+        <div class="container">
+            <div class="section-eyebrow animate-on-scroll">How it's wired</div>
+            <h2 class="section-title animate-on-scroll">Fan out, then judge — not one big prompt</h2>
+            <p class="section-subtitle animate-on-scroll">
+                An earlier draft asked one model call to map dependencies, analyze compliance
+                boundaries, and synthesize a matrix in a single pass — three unrelated jobs sharing
+                one context window, each getting less attention than it deserved. Everything below
+                that can run independently, does.
+            </p>
+
+            <div class="pipeline animate-on-scroll">
+                <div class="pipeline-stage">Program Brief <span class="stage-sub">ambiguous, underspecified, real</span></div>
+                <div class="pipeline-arrow">↓</div>
+                <div class="pipeline-stage">01 · Framing Agent <span class="stage-sub">brief → structured charter</span></div>
+                <div class="pipeline-arrow">↓</div>
+
+                <div class="fanout-group">
+                    <div class="fanout-label">02 · Risk Mapper — Lead Architectural Risk Orchestrator</div>
+                    <div class="fanout-lenses">
+                        <div class="lens-card">Dependency / SPOF lens</div>
+                        <div class="lens-card">Compliance / PHI boundary lens</div>
+                    </div>
+                    <div class="fanout-arrow-down">↓ both feed the judge, neither sees the other's output ↓</div>
+                    <div class="judge-card">Synthesis Judge → Risk Matrix</div>
+                </div>
+
+                <div class="pipeline-arrow">↓</div>
+
+                <div class="fanout-group">
+                    <div class="fanout-label">03 · Build-vs-Buy Decision Panel</div>
+                    <div class="fanout-lenses">
+                        <div class="lens-card">Build advocate</div>
+                        <div class="lens-card">Buy / borrow advocate</div>
+                        <div class="lens-card">TCO skeptic</div>
+                    </div>
+                    <div class="fanout-arrow-down">↓ three committed stances, argued independently ↓</div>
+                    <div class="judge-card">Judge → build / buy / hybrid / defer</div>
+                </div>
+
+                <div class="pipeline-arrow">↓</div>
+                <div class="pipeline-stage">04 · Status Synthesizer <span class="stage-sub">RAG status + OKR alignment check</span></div>
+                <div class="pipeline-arrow">↓</div>
+                <div class="pipeline-stage">05 · Redirect / Kill Agent <span class="stage-sub">continue · redirect resources · shut down</span></div>
+                <div class="pipeline-arrow">↓</div>
+                <div class="pipeline-stage">06 · Playbook Agent <span class="stage-sub">every run → a mentoring case study</span></div>
+            </div>
+
+            <div class="architecture-note animate-on-scroll">
+                <strong>Model tiering is a build-vs-buy call applied to itself.</strong> Judgment-critical
+                steps run on Claude Opus 5; parallelizable single-stance lenses and the playbook
+                write-up (distillation, not judgment) run on Claude Sonnet 5. Full rationale, including
+                why <code>recommended_owner</code> is a required field and not optional, is in
+                <a href="ARCHITECTURE.md">ARCHITECTURE.md</a>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Example run -->
+    <section id="example" class="example-section">
+        <div class="container">
+            <div class="section-eyebrow animate-on-scroll">Not a mockup</div>
+            <h2 class="section-title animate-on-scroll">One real run, start to finish</h2>
+            <p class="section-subtitle animate-on-scroll">
+                This is the actual pipeline output for <code>sample_programs/async_triage_unification.md</code>
+                — included in the repo. Run it yourself with <code>python run_demo.py sample_programs/async_triage_unification.md</code>.
+            </p>
+
+            <div class="example-brief animate-on-scroll">
+                <div class="example-brief-label">The brief</div>
+                <p><strong>Unified async triage across two surfaces, no named owner, no written PHI boundary, "sometime in Q4."</strong></p>
+                <ul>
+                    <li>Mobile owns intake; the clinician console's escalation queue assumes intake always starts on mobile.</li>
+                    <li>Two teams call the shared risk-scoring model directly instead of through its service, for reasons nobody explained.</li>
+                    <li>Compliance flagged a PHI handling concern in a hallway conversation — nothing written down.</li>
+                    <li>Every team believes another team owns the parts they don't.</li>
+                </ul>
+            </div>
+
+            <div class="example-grid animate-on-scroll">
+                <div class="example-card">
+                    <div class="example-card-header">
+                        <h4>01 · Charter</h4>
+                        <span class="badge severity-high">ambiguity: high</span>
+                    </div>
+                    <div class="field-label">Problem statement</div>
+                    <p>Triage state is inconsistent across two surfaces and no team owns the end-to-end flow.</p>
+                    <div class="field-label">Open questions surfaced</div>
+                    <p>"Who owns the end-to-end state machine today?" · "Why are two teams bypassing the shared risk-scoring service?"</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-card-header">
+                        <h4>02 · Risk Matrix</h4>
+                        <span class="badge severity-critical">critical finding</span>
+                    </div>
+                    <div class="risk-row">
+                        <div class="risk-row-header">
+                            <strong>Undocumented PHI boundary</strong>
+                            <span class="badge severity-critical">critical</span>
+                        </div>
+                        <p>Symptom + risk-score data crosses from the consumer app to the clinician console with no written handling boundary.</p>
+                        <span class="owner-tag">unowned — needs assignment</span>
+                    </div>
+                    <div class="risk-row">
+                        <div class="risk-row-header">
+                            <strong>Risk-scoring service bypass</strong>
+                            <span class="badge severity-high">high</span>
+                        </div>
+                        <p>Two teams call the risk model directly, breaking the single source of truth.</p>
+                        <span class="owner-tag">Risk scoring team</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-card-header">
+                        <h4>03 · Build vs. Buy</h4>
+                        <span class="badge severity-medium">hybrid · medium confidence</span>
+                    </div>
+                    <p>Extend the existing escalation queue now to unblock Q4, while scoping the PHI boundary in parallel. Commit to a real shared triage-state service only once that boundary is signed off.</p>
+                    <div class="dissent-box">Dissenting view (build lens): patching now guarantees a second migration later — the build lens would rather absorb the delay upfront.</div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-card-header">
+                        <h4>04 · Status</h4>
+                        <span class="badge status-amber">🟡 amber</span>
+                    </div>
+                    <p>Scope is real and worth doing, but shipping before the PHI boundary is signed off is the primary risk to the Q4 date — not engineering capacity.</p>
+                    <div class="field-label">At-risk OKR</div>
+                    <p>Compliance-readiness OKR (no signed boundary spec yet).</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-card-header">
+                        <h4>05 · Redirect Call</h4>
+                        <span class="badge severity-medium">redirect resources</span>
+                    </div>
+                    <p>Continue the technical work, but redirect one PM-week immediately to force a named owner and a compliance sign-off date — without that, the Q4 date is fiction regardless of engineering progress.</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-card-header">
+                        <h4>06 · Playbook Entry</h4>
+                        <span class="badge status-green">auto-generated</span>
+                    </div>
+                    <p><strong>"When three teams each think someone else owns the state machine."</strong></p>
+                    <p style="margin-top:0.6rem">Reusable lesson: an unnamed owner is itself a P0 risk, not a footnote — treat "no one owns this yet" as a blocking finding, not an open question to revisit later.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model tiering -->
+    <section class="tiering-section">
+        <div class="container">
+            <div class="section-eyebrow animate-on-scroll">Cost/quality tradeoff</div>
+            <h2 class="section-title animate-on-scroll">Every model choice is a build-vs-buy call too</h2>
+            <div class="tiering-grid animate-on-scroll">
+                <div class="tiering-card judgment">
+                    <span class="tier-badge judgment">Claude Opus 5</span>
+                    <h3 style="margin-top:0.9rem">Judgment tier</h3>
+                    <p style="color:var(--text-secondary); font-size:0.9375rem">Runs the steps where a wrong call is expensive to unwind.</p>
+                    <ul>
+                        <li>Framing an ambiguous program</li>
+                        <li>Synthesizing the risk matrix</li>
+                        <li>The build-vs-buy verdict</li>
+                        <li>RAG status + OKR alignment</li>
+                        <li>The redirect / kill decision</li>
+                    </ul>
+                </div>
+                <div class="tiering-card lens">
+                    <span class="tier-badge lens">Claude Sonnet 5</span>
+                    <h3 style="margin-top:0.9rem">Lens tier</h3>
+                    <p style="color:var(--text-secondary); font-size:0.9375rem">Runs parallelizable, single-stance work — not judgment.</p>
+                    <ul>
+                        <li>Dependency/SPOF risk lens</li>
+                        <li>Compliance-boundary risk lens</li>
+                        <li>Build / buy / TCO-skeptic lenses</li>
+                        <li>Playbook distillation &amp; formatting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quickstart -->
+    <section id="quickstart" class="quickstart-section">
+        <div class="container">
+            <div class="section-eyebrow animate-on-scroll">Try it</div>
+            <h2 class="section-title animate-on-scroll">Three commands</h2>
+            <p class="section-subtitle animate-on-scroll">Fully offline mode needs no API key and is what the test suite runs.</p>
+            <div class="code-block animate-on-scroll">
+<pre><span class="comment"># live mode -- calls Claude, needs ANTHROPIC_API_KEY</span>
+<span class="cmd">python run_demo.py sample_programs/async_triage_unification.md</span>
+
+<span class="comment"># run two ambiguous programs concurrently</span>
+<span class="cmd">python run_demo.py sample_programs/*.md</span>
+
+<span class="comment"># fully offline -- deterministic fixtures, no network, no key</span>
+<span class="cmd">TPM_AGENT_MOCK=1 pytest tests/ -v</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Let's Connect</h2>
+            <div class="contact-content animate-on-scroll">
+                <p class="contact-subtitle">
+                    Built this to show the operating model, not just describe it. Happy to walk
+                    through the design decisions or the code.
+                </p>
+                <div class="contact-methods">
+                    <a href="mailto:navi.k.sohi@gmail.com" class="contact-card">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <h3>Email</h3>
+                        <p>navi.k.sohi@gmail.com</p>
+                    </a>
+                    <a href="https://linkedin.com/in/navisohi/" target="_blank" class="contact-card">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        <h3>LinkedIn</h3>
+                        <p>linkedin.com/in/navisohi</p>
+                    </a>
+                    <a href="https://github.com/PlainJane20/tpm-agent-os" target="_blank" class="contact-card">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <h3>GitHub</h3>
+                        <p>this repo</p>
+                    </a>
+                    <a href="https://plainjane20.github.io/" target="_blank" class="contact-card">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15.93c-3.35-.42-6-3.27-6-6.93 0-.55.05-1.09.15-1.62L9 15v2h1v2.93zM17.9 17.39c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        <h3>Portfolio</h3>
+                        <p>plainjane20.github.io</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Navi Sohi · <a href="https://github.com/PlainJane20/tpm-agent-os">View source on GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
