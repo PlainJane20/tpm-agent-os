@@ -15,11 +15,11 @@
 </div>
 
 A multi-agent system, built on Claude, that encodes six recurring
-Staff/Principal Technical Program Manager competencies as software instead
-of describing them in a bullet point. Feed it one ambiguous, high-risk
-program brief; it runs the same operating model a Staff TPM runs by hand —
-not a script tailored to one company's job posting, but the competencies
-almost every Staff TPM role asks for.
+Staff/Principal Technical Program Manager (TPM) competencies as software
+instead of describing them in a bullet point. Feed it one ambiguous,
+high-risk program brief; it runs the same operating model a Staff TPM runs
+by hand — not a script tailored to one company's job posting, but the
+competencies almost every Staff TPM role asks for.
 
 **Explore:** [Competencies](#competencies-demonstrated) · [How it works](#how-it-works) · [Architecture](#architecture) · [Real findings](#real-findings-from-building-and-testing-this) · [Setup](#setup) · [Usage](#usage) · [Repository map](#repository-map)
 
@@ -37,7 +37,7 @@ to one of those competencies — not because it made a tidy demo:
 | **Framing** | Owning ambiguous, high-risk programs end-to-end — from initial framing through delivery. |
 | **Risk Mapper** *(Lead Architectural Risk Orchestrator)* | Acting as a **technical integrator** — surfacing architectural misalignment and cross-domain risk before it becomes an incident. |
 | **Decision Panel** | Shaping technical roadmap and **build-vs-buy decisions** by weighing engineering, product, and business constraints together. |
-| **Status Synthesizer** | Designing execution frameworks that keep **roadmap and OKR alignment** intact across teams. |
+| **Status Synthesizer** | Designing execution frameworks that keep **roadmap and OKR (Objectives and Key Results) alignment** intact across teams. |
 | **Redirect / Kill** | Having the judgment to **shut down a program or redirect resources** when that's the right call. |
 | **Playbook** | **Mentoring other TPMs** via durable onboarding material, not just running your own programs. |
 
@@ -51,14 +51,16 @@ claim into a growing, inspectable corpus.
 1. Takes an ambiguous, underspecified program brief (markdown)
 2. **Frames** it into a structured charter — scope, stakeholders, and the
    open questions nobody has answered yet, surfaced instead of papered over
-3. **Maps architectural risk** across domains via two independent lenses
-   (dependency/SPOF, compliance/PHI boundary) run in parallel, synthesized
-   by a judge
+3. **Maps architectural risk** across domains via two independent lenses —
+   a dependency / SPOF (single point of failure) lens, and a compliance /
+   PHI (Protected Health Information) boundary lens — run in parallel,
+   synthesized by a judge
 4. Runs a **build-vs-buy decision panel** — three committed lenses (build,
-   buy, TCO skeptic) argue independently, a judge decides and names the
-   dissenting view
-5. Synthesizes an executive-ready **RAG status** and checks it against the
-   org's OKRs, calling out misalignment even when it's inconvenient
+   buy, and a TCO — total cost of ownership — skeptic) argue independently,
+   a judge decides and names the dissenting view
+5. Synthesizes an executive-ready **RAG (red/amber/green) status** and
+   checks it against the org's OKRs, calling out misalignment even when
+   it's inconvenient
 6. Makes the **redirect-or-kill call** explicitly — continue, redirect
    resources, or shut down — instead of defaulting to "continue"
 7. Auto-generates a **mentoring playbook entry** from the run, so onboarding
@@ -139,7 +141,8 @@ Full agent-by-agent design rationale: [ARCHITECTURE.md](ARCHITECTURE.md).
 - **Mock mode had to be a first-class path, not an afterthought.**
   `TPM_AGENT_MOCK=1` short-circuits every Claude call to a fixture, so the
   full six-agent pipeline, its concurrency, and every schema contract get
-  exercised in CI with zero API key and zero network dependency.
+  exercised in CI (continuous integration) with zero API key and zero
+  network dependency.
 
 ## Setup
 

@@ -1,8 +1,9 @@
 """Structured-output contracts shared across every agent in the pipeline.
 
 Every agent returns one of these Pydantic models (via `client.messages.parse`),
-never free text. That's a deliberate choice: a Staff TPM operating model lives
-or dies on whether artifacts compose -- a risk map that's just a paragraph
+never free text. That's a deliberate choice: a Staff Technical Program
+Manager's (TPM's) operating model lives or dies on whether artifacts
+compose -- a risk map that's just a paragraph
 can't be fed into a status report or a kill/redirect decision without a human
 re-typing it. Schemas make every stage's output the next stage's input.
 """
@@ -43,14 +44,16 @@ class DomainRisk(BaseModel):
 class RiskMap(BaseModel):
     """Output of the Risk Mapper: the synthesized architectural-risk matrix,
     produced by a judge agent from two independent parallel lenses
-    (dependency/SPOF and compliance-boundary)."""
+    (dependency/SPOF -- single point of failure -- and compliance-boundary)."""
 
     risks: List[DomainRisk]
     single_points_of_failure: List[str]
     phi_pii_flags: List[str] = Field(
-        description="Any data flow that touches or plausibly touches "
-        "PHI/PII. Bias toward flagging when ambiguous -- a false positive "
-        "costs a review, a false negative costs a compliance incident."
+        description="Any data flow that touches or plausibly touches PHI "
+        "(Protected Health Information) or PII (Personally Identifiable "
+        "Information). Bias toward flagging when ambiguous -- a false "
+        "positive costs a review, a false negative costs a compliance "
+        "incident."
     )
     architectural_notes: str
 
