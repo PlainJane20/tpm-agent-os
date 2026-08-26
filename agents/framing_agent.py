@@ -1,7 +1,8 @@
 """Framing agent -- turns an ambiguous brief into an actionable charter.
 
-Maps to the JD line: "Own group-level and org-level strategic programs with
-ambiguous scope and high risk, from initial framing through delivery."
+Staff TPM competency: owning an ambiguous, high-risk program end-to-end --
+from initial framing through delivery -- rather than starting from a scope
+someone else already defined.
 """
 
 from agents.base import MODEL_JUDGMENT, call_agent_async

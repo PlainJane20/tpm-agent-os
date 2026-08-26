@@ -68,12 +68,12 @@ the actual shape of a real build-vs-buy call.
 where a wrong call is expensive to unwind — framing, risk synthesis, the
 build-vs-buy verdict, RAG status, the redirect/kill decision — and
 `MODEL_LENS` (Sonnet) for parallelizable single-stance arguments and the
-playbook write-up, which is distillation, not judgment. This mirrors the
-JD's own framing of "where technical investment can unlock new capability" —
-applied to model spend instead of engineering headcount. The tiering is a
-single choke point (`call_agent_async`) specifically so it can be re-tuned
-in one place as real usage data comes in, rather than scattered across six
-agent files.
+playbook write-up, which is distillation, not judgment. This is the same
+"where does technical investment actually change the outcome" judgment a
+Staff TPM is asked to apply to engineering effort — applied here to model
+spend instead of headcount. The tiering is a single choke point
+(`call_agent_async`) specifically so it can be re-tuned in one place as
+real usage data comes in, rather than scattered across six agent files.
 
 ## Why mock mode exists and what it does and doesn't prove
 

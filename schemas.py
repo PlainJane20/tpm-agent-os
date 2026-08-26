@@ -87,8 +87,8 @@ class ProgramStatus(BaseModel):
 
 
 class RedirectDecision(BaseModel):
-    """The 'shut it down or keep going' call -- the JD explicitly names this
-    as a Staff-level judgment call, not just an execution task."""
+    """The 'shut it down or keep going' call -- a Staff-level judgment call
+    in its own right, not just an execution task."""
 
     call: Literal["continue", "redirect_resources", "shut_down"]
     justification: str

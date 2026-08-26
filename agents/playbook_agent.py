@@ -1,14 +1,16 @@
 """Playbook Agent -- turns every pipeline run into a mentoring artifact.
 
-Maps to the JD line: "Mentor other TPMs and contribute to growing the team
-through interviewing, sourcing, and onboarding." Every run of this pipeline
-writes one of these -- a growing, queryable corpus a new TPM could read
-instead of waiting for a 1:1 to learn how ambiguous programs actually get
-framed, risk-mapped, and decided on this team.
+Staff TPM competency: mentoring other TPMs and building durable onboarding
+material -- growing the practice, not just running your own programs.
+Every run of this pipeline writes one of these -- a growing, queryable
+corpus a new TPM could read instead of waiting for a 1:1 to learn how
+ambiguous programs actually get framed, risk-mapped, and decided on this
+team.
 
 This is a formatting/distillation job, not a judgment call, so it runs on
-the cheaper lens-tier model -- the same cost/quality split the JD itself
-asks a Staff TPM to make on technical investment.
+the cheaper lens-tier model -- the same cost/quality tradeoff a Staff TPM
+is asked to apply to technical investment decisions, applied here to model
+spend.
 """
 
 from agents.base import MODEL_LENS, call_agent_async
