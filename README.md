@@ -1,5 +1,9 @@
 # tpm-agent-os
 
+## A Multi-Agent Operating Model for Technical Program Management
+
+> **Ambiguity in. Structure, risk, and a decision out.**
+
 <div align="center">
 
 [![Python 3.9+](https://img.shields.io/badge/Python_3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -10,13 +14,39 @@
 
 </div>
 
-A multi-agent operating model for technical program management, built on
-Claude. Feed it one ambiguous, high-risk program brief; it runs the same
-operating model a Staff/Principal TPM runs by hand — not a script tailored
-to one company's job posting, but the recurring competencies almost every
-Staff TPM role asks for.
+A multi-agent system, built on Claude, that encodes six recurring
+Staff/Principal Technical Program Manager competencies as software instead
+of describing them in a bullet point. Feed it one ambiguous, high-risk
+program brief; it runs the same operating model a Staff TPM runs by hand —
+not a script tailored to one company's job posting, but the competencies
+almost every Staff TPM role asks for.
 
-## What it does
+**Explore:** [Competencies](#competencies-demonstrated) · [How it works](#how-it-works) · [Architecture](#architecture) · [Real findings](#real-findings-from-building-and-testing-this) · [Setup](#setup) · [Usage](#usage) · [Repository map](#repository-map)
+
+## Competencies demonstrated
+
+Every Staff/Principal TPM role is, underneath the title, asking for the
+same operating model: take something ambiguous, impose structure on it
+fast, catch cross-team risk before it becomes an incident, make the
+build-vs-buy and kill/redirect calls explicitly instead of by default, and
+teach the next TPM how you did it. Each agent below exists because it maps
+to one of those competencies — not because it made a tidy demo:
+
+| Agent | Competency it demonstrates |
+|---|---|
+| **Framing** | Owning ambiguous, high-risk programs end-to-end — from initial framing through delivery. |
+| **Risk Mapper** *(Lead Architectural Risk Orchestrator)* | Acting as a **technical integrator** — surfacing architectural misalignment and cross-domain risk before it becomes an incident. |
+| **Decision Panel** | Shaping technical roadmap and **build-vs-buy decisions** by weighing engineering, product, and business constraints together. |
+| **Status Synthesizer** | Designing execution frameworks that keep **roadmap and OKR alignment** intact across teams. |
+| **Redirect / Kill** | Having the judgment to **shut down a program or redirect resources** when that's the right call. |
+| **Playbook** | **Mentoring other TPMs** via durable onboarding material, not just running your own programs. |
+
+A resume can claim any of these; it can't produce evidence of them. Every
+run emits a playbook entry — a teachable case study a new TPM could
+actually read — which is what turns "mentors TPMs," for example, from a
+claim into a growing, inspectable corpus.
+
+## How it works
 
 1. Takes an ambiguous, underspecified program brief (markdown)
 2. **Frames** it into a structured charter — scope, stakeholders, and the
@@ -35,33 +65,6 @@ Staff TPM role asks for.
    material accumulates instead of living only in someone's head
 8. Can run several ambiguous programs **concurrently** (`asyncio`), because
    real programs don't queue up one at a time
-
-## Why this exists
-
-Every Staff/Principal TPM role is, underneath the title, asking for the
-same operating model: take something ambiguous, impose structure on it
-fast, catch cross-team risk before it becomes an incident, make the
-build-vs-buy and kill/redirect calls explicitly instead of by default, and
-teach the next TPM how you did it. That's specific enough to encode as
-software, and this is a way to show it rather than describe it in a bullet
-point.
-
-Each agent maps to a specific, recurring Staff TPM competency — not to
-whatever made a tidy demo:
-
-| Agent | Staff TPM competency it demonstrates |
-|---|---|
-| **Framing** | Owning ambiguous, high-risk programs end-to-end — from initial framing through delivery. |
-| **Risk Mapper** *(Lead Architectural Risk Orchestrator)* | Acting as a **technical integrator** — surfacing architectural misalignment and cross-domain risk before it becomes an incident. |
-| **Decision Panel** | Shaping technical roadmap and **build-vs-buy decisions** by weighing engineering, product, and business constraints together. |
-| **Status Synthesizer** | Designing execution frameworks that keep **roadmap and OKR alignment** intact across teams. |
-| **Redirect / Kill** | Having the judgment to **shut down a program or redirect resources** when that's the right call. |
-| **Playbook** | **Mentoring other TPMs** via durable onboarding material, not just running your own programs. |
-
-A resume can say "I mentor TPMs"; it can't produce evidence of it. Every
-run emits a playbook entry — a teachable case study a new TPM could
-actually read. That turns mentoring from a claim into a growing,
-inspectable corpus.
 
 ## Architecture
 
@@ -161,9 +164,9 @@ charter, risk matrix, build-vs-buy verdict, RAG status, redirect decision,
 and playbook entry — each one the schema-validated input to the next
 stage, not a paragraph a human has to re-type.
 
-**For presentations:** open [`index.html`](index.html) directly in a browser
-(light/dark toggle, no server needed) for a walkthrough styled for
-screen-sharing, including a full example run rendered as cards.
+There's also a static walkthrough at [`index.html`](index.html) — open it
+directly in a browser (light/dark toggle, no server needed) for the
+architecture diagram and a full example run rendered as cards.
 
 ## Sample programs included
 
@@ -184,6 +187,22 @@ screen-sharing, including a full example run rendered as cards.
 - A memory store across runs so the Playbook agent can say "this is the
   third time an unnamed owner showed up in a Q4 program" instead of
   treating every run as the first.
+
+## Repository map
+
+```text
+tpm-agent-os/
+├── agents/              Six agents -- framing, risk mapper, decision panel,
+│                        status synthesizer, redirect/kill, playbook
+├── sample_programs/     Ambiguous program briefs used as running examples
+├── tests/               Offline pipeline tests (TPM_AGENT_MOCK=1, no API key)
+├── schemas.py           Pydantic contracts every agent returns
+├── fixtures.py          Deterministic mock outputs for offline testing
+├── orchestrator.py      Wires the six agents into one pipeline
+├── run_demo.py          CLI entrypoint
+├── index.html           Static walkthrough -- open directly in a browser
+└── ARCHITECTURE.md      Agent-by-agent design rationale
+```
 
 ## Contact
 
