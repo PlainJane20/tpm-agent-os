@@ -1,7 +1,8 @@
 """Build-vs-Buy Decision Panel.
 
-Maps to the JD line: "Shape technical roadmap and build-vs-buy decisions by
-aligning engineering, product, and business constraints."
+Staff TPM competency: shaping technical roadmap and build-vs-buy decisions
+by weighing engineering, product, and business constraints together --
+one of the clearest signals of Staff-level technical judgment.
 
 Three independent lenses argue their case in parallel without seeing each
 other, then a judge -- who sees all three -- decides. This is a judge-panel

@@ -1,10 +1,10 @@
 """Redirect/Kill Agent.
 
-Maps to the JD line: "Make the call to shut down programs or redirect
-resources when it's the right outcome for the business." This is named
-explicitly in the JD as a Staff-level judgment call, not an execution task --
-so it gets its own agent and its own schema, instead of being a footnote on
-the status report.
+Staff TPM competency: having the judgment and authority to shut down a
+program or redirect resources when that's the right call for the business,
+instead of defaulting to "continue." This is a distinct judgment call, not
+an execution task -- so it gets its own agent and its own schema, instead
+of being a footnote on the status report.
 """
 
 from agents.base import MODEL_JUDGMENT, call_agent_async

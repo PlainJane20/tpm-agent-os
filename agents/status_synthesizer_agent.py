@@ -1,8 +1,8 @@
 """Status Synthesizer -- RAG status + OKR alignment check.
 
-Maps to the JD lines: "Design execution frameworks and operating models --
-planning cadences, program reviews..." and "...keep roadmap and OKR
-alignment intact across the organization."
+Staff TPM competency: designing execution frameworks -- planning cadences,
+program reviews, cross-team operating rhythms -- that keep roadmap and OKR
+alignment intact across multiple teams.
 """
 
 from agents.base import MODEL_JUDGMENT, call_agent_async

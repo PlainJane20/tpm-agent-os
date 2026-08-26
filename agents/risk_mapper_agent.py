@@ -1,8 +1,9 @@
 """Risk Mapper -- the Lead Architectural Risk Orchestrator.
 
-Maps to the JD line: "Operate as a technical integrator, identifying
-architectural misalignments and system- or platform-level risks across
-domains."
+Staff TPM competency: acting as a technical integrator -- surfacing
+architectural misalignments and system-/platform-level risk across domains
+before they become incidents, rather than only tracking status after the
+fact.
 
 This agent is a fan-out/synthesize pattern, not one large prompt. An earlier
 draft of this agent asked a single model call to do dependency mapping *and*

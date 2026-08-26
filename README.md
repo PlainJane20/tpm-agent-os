@@ -13,25 +13,26 @@ python run_demo.py sample_programs/async_triage_unification.md
 
 ## Why this exists
 
-Every Staff/Principal TPM job description is, underneath the title, asking
-for the same operating model: take something ambiguous, impose structure on
-it fast, catch the cross-team risk before it becomes an incident, make the
+Every Staff/Principal TPM role is, underneath the title, asking for the
+same operating model: take something ambiguous, impose structure on it
+fast, catch the cross-team risk before it becomes an incident, make the
 build-vs-buy and kill/redirect calls explicitly instead of by default, and
-teach the next TPM how you did it. I built this because that operating
-model is specific enough to encode as software, and I wanted a way to show
-it rather than describe it in a bullet point.
+teach the next TPM how you did it. That operating model shows up, in some
+form, in almost every Staff-level TPM posting across tech and healthtech —
+it's specific enough to encode as software, and I wanted a way to show it
+rather than describe it in a bullet point.
 
-Each agent below exists because of a specific line I kept re-reading in
-recent Staff TPM postings, not because it made a tidy demo:
+Each agent below exists because it maps to a specific, recurring Staff TPM
+competency — not because it made a tidy demo:
 
-| Agent | JD language it answers |
+| Agent | Staff TPM competency it demonstrates |
 |---|---|
-| **Framing** | "Own group-level and org-level strategic programs with ambiguous scope and high risk, **from initial framing through delivery**." |
-| **Risk Mapper** (Lead Architectural Risk Orchestrator) | "Operate as a **technical integrator**, identifying architectural misalignments and system- or platform-level risks across domains." |
-| **Decision Panel** | "Shape technical roadmap and **build-vs-buy decisions** by aligning engineering, product, and business constraints." |
-| **Status Synthesizer** | "Design execution frameworks and operating models... keep **roadmap and OKR alignment** intact across the organization." |
-| **Redirect/Kill** | "Make the call to **shut down programs or redirect resources** when it's the right outcome for the business." |
-| **Playbook** | "**Mentor other TPMs** and contribute to growing the team through... onboarding." |
+| **Framing** | Owning ambiguous, high-risk programs end-to-end — from initial framing through delivery — rather than starting from a scope someone else already defined. |
+| **Risk Mapper** (Lead Architectural Risk Orchestrator) | Acting as a **technical integrator**: surfacing architectural misalignments and cross-domain/platform risk before they become incidents, not just tracking status. |
+| **Decision Panel** | Shaping technical roadmap and **build-vs-buy decisions** by weighing engineering, product, and business constraints together — one of the clearest signals of Staff-level technical judgment. |
+| **Status Synthesizer** | Designing execution frameworks — planning cadences, program reviews, cross-team operating rhythms — that keep **roadmap and OKR alignment** intact across multiple teams. |
+| **Redirect/Kill** | Having the judgment and authority to **shut down a program or redirect resources** when that's the right call, instead of defaulting to "continue." |
+| **Playbook** | **Mentoring other TPMs** and building durable onboarding material — growing the practice, not just running your own programs. |
 
 That last row matters more than it looks. A resume can say "I mentor TPMs";
 it can't produce evidence of it. Every run of this pipeline emits a
