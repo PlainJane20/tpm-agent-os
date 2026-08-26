@@ -11,6 +11,11 @@ because real programs don't queue up one at a time.
 python run_demo.py sample_programs/async_triage_unification.md
 ```
 
+**For presentations:** open [`index.html`](index.html) directly in a browser (light/dark toggle,
+no server needed) for a walkthrough of the architecture and a real example run, styled for
+screen-sharing rather than reading raw markdown. If this repo is ever made public, enabling
+GitHub Pages in Settings will serve it at a URL directly.
+
 ## Why this exists
 
 Every Staff/Principal TPM role is, underneath the title, asking for the
