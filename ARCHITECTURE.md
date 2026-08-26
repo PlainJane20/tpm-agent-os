@@ -6,7 +6,8 @@ this is what I'd actually defend in a design review.
 ## Why structured outputs everywhere, not free text
 
 Every agent returns a Pydantic model via `client.messages.parse`
-(`schemas.py`), never a paragraph. A Staff TPM's actual output isn't prose —
+(`schemas.py`), never a paragraph. A Staff Technical Program Manager's
+(TPM's) actual output isn't prose —
 it's a charter, a risk register, a decision record, a status doc — things
 other people and other systems act on without re-parsing your intent. If
 the Risk Mapper returned a paragraph, the Decision Panel would need its own
@@ -36,9 +37,10 @@ that, in order of how expensive they are to notice:
    the wrong process control (sequential) on a problem shape that doesn't
    need it (parallel).
 2. **One context window doing three jobs does each one shallower.** A model
-   asked to map dependencies, reason about PHI boundaries, and synthesize a
-   matrix in the same pass has less room to go deep on any single dimension
-   than three narrowly-scoped calls would.
+   asked to map dependencies, reason about PHI (Protected Health
+   Information) boundaries, and synthesize a matrix in the same pass has
+   less room to go deep on any single dimension than three narrowly-scoped
+   calls would.
 3. **A single pass can't surface disagreement between the two analyses,
    because there's only ever one pass.** Splitting them means the judge
    sees both independently-generated views and can flag if they conflict,
@@ -66,7 +68,8 @@ the actual shape of a real build-vs-buy call.
 
 `agents/base.py` defines two tiers: `MODEL_JUDGMENT` (Opus) for the steps
 where a wrong call is expensive to unwind — framing, risk synthesis, the
-build-vs-buy verdict, RAG status, the redirect/kill decision — and
+build-vs-buy verdict, RAG (red/amber/green) status, the redirect/kill
+decision — and
 `MODEL_LENS` (Sonnet) for parallelizable single-stance arguments and the
 playbook write-up, which is distillation, not judgment. This is the same
 "where does technical investment actually change the outcome" judgment a
@@ -81,7 +84,8 @@ real usage data comes in, rather than scattered across six agent files.
 canned fixture from `fixtures.py`. It exists for one reason: to let the
 orchestration logic, schema contracts, concurrent execution, and artifact
 writing be tested and iterated on without spending API credits or requiring
-network access on every change — including in CI, which has no API key.
+network access on every change — including in CI (continuous integration),
+which has no API key.
 
 What it proves: the plumbing is correct. Six agents wire together, run
 concurrently where they should, and produce six valid artifacts.
