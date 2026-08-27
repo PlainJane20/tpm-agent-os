@@ -1,3 +1,5 @@
+<img src="docs/tpm-agent-os-banner.svg" alt="TPM Agent OS — Staff Tpm Operating System" width="100%" />
+
 # tpm-agent-os
 
 ## A Multi-Agent Operating Model for Technical Program Management
