@@ -23,6 +23,19 @@ high-risk program brief; it runs the same operating model a Staff TPM runs
 by hand — not a script tailored to one company's job posting, but the
 competencies almost every Staff TPM role asks for.
 
+> **Related work in this portfolio:** [Tarmac](https://github.com/PlainJane20/tarmac)
+> and [signalweave-ai](https://github.com/PlainJane20/signalweave-ai) also
+> model TPM/portfolio decision-governance territory (build-vs-buy,
+> redirect-or-kill calls, evidence-backed decisions) — worth saying
+> plainly rather than pretending each is unrelated. They're deliberately
+> different *shapes* of the same underlying interest: Tarmac is a web-app
+> governance layer connecting Jira/GitHub/ServiceNow-style tools;
+> signalweave-ai is a six-agent decision-control-plane with a policy
+> engine and dashboard; this one is the leanest of the three — a direct,
+> six-agent pipeline modeling the operating model itself, with a
+> generated mentoring playbook as its distinguishing output. Read as
+> three angles on one interest, not three unrelated ideas.
+
 **Explore:** [Competencies](#competencies-demonstrated) · [How it works](#how-it-works) · [Architecture](#architecture) · [Real findings](#real-findings-from-building-and-testing-this) · [Setup](#setup) · [Usage](#usage) · [Repository map](#repository-map)
 
 ## Competencies demonstrated
