@@ -26,9 +26,8 @@ competencies almost every Staff TPM role asks for.
 > **Related work in this portfolio:** [Tarmac](https://github.com/PlainJane20/tarmac)
 > and [signalweave-ai](https://github.com/PlainJane20/signalweave-ai) also
 > model TPM/portfolio decision-governance territory (build-vs-buy,
-> redirect-or-kill calls, evidence-backed decisions) — worth saying
-> plainly rather than pretending each is unrelated. They're deliberately
-> different *shapes* of the same underlying interest: Tarmac is a web-app
+> redirect-or-kill calls, evidence-backed decisions). They're three
+> deliberately different *shapes* of the same underlying interest: Tarmac is a web-app
 > governance layer connecting Jira/GitHub/ServiceNow-style tools;
 > signalweave-ai is a six-agent decision-control-plane with a policy
 > engine and dashboard; this one is the leanest of the three — a direct,
