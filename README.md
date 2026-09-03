@@ -23,6 +23,22 @@ high-risk program brief; it runs the same operating model a Staff TPM runs
 by hand — not a script tailored to one company's job posting, but the
 competencies almost every Staff TPM role asks for.
 
+> **Why I built it:** this is a personal project, built to get real practice
+> at the parts of a Staff TPM operating model that never show up as a
+> single ticket — framing an ambiguous brief before scope is agreed,
+> forcing two independent risk lenses to disagree with each other before
+> trusting a synthesized verdict, and running a build-vs-buy panel where
+> three committed stances argue instead of one model quietly averaging
+> toward the middle. The redirect-or-kill agent specifically was practice
+> at making the "should this program keep going" call explicit and
+> defensible, which is the judgment call that separates a Staff TPM from
+> someone who just tracks status. The auto-generated playbook entry was
+> practice at turning a single run into durable mentoring material instead
+> of a decision that lives only in my head — the actual job at
+> Staff/Principal level isn't running your own programs cleanly, it's
+> making cross-team risk, resourcing, and kill calls out loud, in a form
+> someone else can learn from.
+
 > **Related work in this portfolio:** [Tarmac](https://github.com/PlainJane20/tarmac)
 > and [signalweave-ai](https://github.com/PlainJane20/signalweave-ai) also
 > model TPM/portfolio decision-governance territory (build-vs-buy,
