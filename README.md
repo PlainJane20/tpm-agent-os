@@ -53,6 +53,14 @@ competencies almost every Staff TPM role asks for.
 
 **Explore:** [Competencies](#competencies-demonstrated) · [How it works](#how-it-works) · [Architecture](#architecture) · [Real findings](#real-findings-from-building-and-testing-this) · [Setup](#setup) · [Usage](#usage) · [Repository map](#repository-map)
 
+## Architecture pattern
+
+**Orchestrator-Worker (a fixed, code-sequenced pipeline).** `orchestrator.py` calls six stages in a hard-coded order, passing each stage's typed output to the next. Two stages fan out internally and then synthesise: `agents/risk_mapper_agent.py` (two lenses, then a judge) and `agents/decision_panel_agent.py` (three lenses via `asyncio.gather`, then a judge). `run_portfolio` also runs several programs concurrently.
+
+- **Deterministic vs model-driven:** Only the sequencing, schema validation and artifact writing are deterministic. Every stage's content is a single structured Claude call through `agents/base.py` (`call_agent_async`), or a canned fixture when `TPM_AGENT_MOCK=1`.
+- **Human gate:** None. The redirect-or-kill stage produces a recommendation as JSON; nothing waits for approval or acts on it.
+- **Honest limit:** Each "agent" is one prompt-and-parse call with no tools, memory or loop, and the lenses never see each other, so the debate is independent opinions plus a judge, not a peer swarm or an autonomous agent.
+
 ## Competencies demonstrated
 
 Every Staff/Principal TPM role is, underneath the title, asking for the
