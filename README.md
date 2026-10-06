@@ -26,10 +26,10 @@ competencies almost every Staff TPM role asks for.
 > **Why I built it:** this is a personal project, built to get real practice
 > at the parts of a Staff TPM operating model that never show up as a
 > single ticket — framing an ambiguous brief before scope is agreed,
-> forcing two independent risk lenses to disagree with each other before
-> trusting a synthesized verdict, and running a build-vs-buy panel where
-> three committed stances argue instead of one model quietly averaging
-> toward the middle. The redirect-or-kill agent specifically was practice
+> running two independent risk lenses (which never see each other) before
+> trusting a synthesized verdict, and a build-vs-buy panel where three
+> committed stances each make their case separately instead of one model
+> quietly averaging toward the middle. The redirect-or-kill agent specifically was practice
 > at making the "should this program keep going" call explicit and
 > defensible, which is the judgment call that separates a Staff TPM from
 > someone who just tracks status. The auto-generated playbook entry was
@@ -94,8 +94,9 @@ claim into a growing, inspectable corpus.
    PHI (Protected Health Information) boundary lens — run in parallel,
    synthesized by a judge
 4. Runs a **build-vs-buy decision panel** — three committed lenses (build,
-   buy, and a TCO — total cost of ownership — skeptic) argue independently,
-   a judge decides and names the dissenting view
+   buy, and a TCO — total cost of ownership — skeptic) each make their case
+   in separate calls without seeing each other (not a live debate), then a
+   judge decides and names the dissenting view
 5. Synthesizes an executive-ready **RAG (red/amber/green) status** and
    checks it against the org's OKRs, calling out misalignment even when
    it's inconvenient
@@ -158,7 +159,7 @@ kill/redirect call) run on `claude-opus-5`. Parallelizable lenses and the
 playbook write-up (distillation, not judgment) run on `claude-sonnet-5` —
 see [`agents/base.py`](agents/base.py).
 
-Full agent-by-agent design rationale: [ARCHITECTURE.md](ARCHITECTURE.md).
+Full agent-by-agent design rationale: [ARCHITECTURE.md](ARCHITECTURE.md). Optional OpenTelemetry tracing of the pipeline and each Claude call is described in [docs/TRACING.md](docs/TRACING.md).
 
 ## Real findings from building and testing this
 
