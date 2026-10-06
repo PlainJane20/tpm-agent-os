@@ -66,6 +66,7 @@ async def run(charter: ProgramCharter, risk_map: RiskMap) -> BuildVsBuyRecommend
                 output_model=DecisionLens,
                 model=MODEL_LENS,
                 mock_fixture=_MOCK_LENSES[stance],
+                agent=f"decision_panel.{stance}",
             )
             for stance, system_prompt in LENS_SYSTEMS.items()
         )
@@ -83,4 +84,5 @@ async def run(charter: ProgramCharter, risk_map: RiskMap) -> BuildVsBuyRecommend
         output_model=BuildVsBuyRecommendation,
         model=MODEL_JUDGMENT,
         mock_fixture=DECISION,
+        agent="decision_panel.judge",
     )

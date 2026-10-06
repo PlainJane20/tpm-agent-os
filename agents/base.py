@@ -18,9 +18,12 @@ without burning credits on every iteration.
 """
 
 import os
+import time
 from typing import Optional, Type, TypeVar
 
 from pydantic import BaseModel
+
+import tracing
 
 MODEL_JUDGMENT = "claude-opus-5"
 MODEL_LENS = "claude-sonnet-5"
@@ -60,6 +63,7 @@ async def call_agent_async(
     output_model: Type[T],
     model: str = MODEL_JUDGMENT,
     mock_fixture: Optional[T] = None,
+    agent: str = "unknown",
 ) -> T:
     """Call Claude with a system prompt and a structured-output contract.
 
@@ -68,6 +72,28 @@ async def call_agent_async(
     tiering, and (later) retry/observability, instead of each agent file
     re-implementing all three.
     """
+    started = time.perf_counter()
+    with tracing.span(
+        "agent_call",
+        **{
+            "agent.name": agent,
+            "model.name": model,
+            "agent.mock": MOCK_MODE,
+            "output.schema": output_model.__name__,
+        },
+    ) as s:
+        try:
+            result = await _call(system, user_content, output_model, model, mock_fixture)
+            tracing.set_attrs(s, **{"agent.success": True})
+            return result
+        except BaseException:
+            tracing.set_attrs(s, **{"agent.success": False})
+            raise
+        finally:
+            tracing.set_attrs(s, **{"duration_ms": round((time.perf_counter() - started) * 1000, 3)})
+
+
+async def _call(system, user_content, output_model, model, mock_fixture):
     if MOCK_MODE:
         if mock_fixture is None:
             raise RuntimeError(

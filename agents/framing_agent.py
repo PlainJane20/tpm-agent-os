@@ -29,4 +29,5 @@ async def run(program_brief: str) -> ProgramCharter:
         output_model=ProgramCharter,
         model=MODEL_JUDGMENT,
         mock_fixture=CHARTER,
+        agent="framing",
     )

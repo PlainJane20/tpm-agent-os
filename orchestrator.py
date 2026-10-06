@@ -19,6 +19,7 @@ import json
 from pathlib import Path
 from typing import List
 
+import tracing
 from agents import (
     decision_panel_agent,
     framing_agent,
@@ -44,14 +45,37 @@ async def run_program(
     resourcing_context: str = DEFAULT_RESOURCING_CONTEXT,
 ) -> dict:
     """Run the full six-agent pipeline against one program brief."""
-    brief = brief_path.read_text()
+    with tracing.span("program") as s:
+        result = await _run_program(brief_path, out_dir, resourcing_context, s)
+        tracing.set_attrs(
+            s,
+            **{
+                "risks.count": len(result["risk_map"].risks),
+                "decision.recommendation": result["decision"].recommendation,
+                "decision.confidence": result["decision"].confidence,
+                "rag.status": result["status"].rag_status,
+                "redirect.call": result["redirect"].call,
+            },
+        )
+        return result
 
-    charter = await framing_agent.run(brief)
-    risk_map = await risk_mapper_agent.run(charter)
-    decision = await decision_panel_agent.run(charter, risk_map)
-    status = await status_synthesizer_agent.run(charter, risk_map, decision)
-    redirect = await redirect_agent.run(charter, risk_map, decision, status, resourcing_context)
-    playbook = await playbook_agent.run(charter, risk_map, decision, status, redirect)
+
+async def _run_program(brief_path: Path, out_dir: Path, resourcing_context: str, program_span) -> dict:
+    brief = brief_path.read_text()
+    tracing.set_attrs(program_span, **{"brief.chars": len(brief)})
+
+    with tracing.span("stage", **{"stage.name": "framing"}):
+        charter = await framing_agent.run(brief)
+    with tracing.span("stage", **{"stage.name": "risk_mapper"}):
+        risk_map = await risk_mapper_agent.run(charter)
+    with tracing.span("stage", **{"stage.name": "decision_panel"}):
+        decision = await decision_panel_agent.run(charter, risk_map)
+    with tracing.span("stage", **{"stage.name": "status_synthesizer"}):
+        status = await status_synthesizer_agent.run(charter, risk_map, decision)
+    with tracing.span("stage", **{"stage.name": "redirect"}):
+        redirect = await redirect_agent.run(charter, risk_map, decision, status, resourcing_context)
+    with tracing.span("stage", **{"stage.name": "playbook"}):
+        playbook = await playbook_agent.run(charter, risk_map, decision, status, redirect)
 
     out_dir.mkdir(parents=True, exist_ok=True)
     _write_json(out_dir / "01_charter.json", charter)
@@ -81,6 +105,7 @@ async def run_portfolio(brief_paths: List[Path], out_root: Path = Path("outputs"
     """Run several ambiguous programs concurrently, not sequentially."""
     import asyncio
 
-    return await asyncio.gather(
-        *(run_program(p, out_root / p.stem) for p in brief_paths)
-    )
+    with tracing.span("portfolio", **{"programs.count": len(brief_paths)}):
+        return await asyncio.gather(
+            *(run_program(p, out_root / p.stem) for p in brief_paths)
+        )

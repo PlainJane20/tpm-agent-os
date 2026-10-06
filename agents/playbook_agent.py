@@ -53,4 +53,5 @@ async def run(
         output_model=PlaybookEntry,
         model=MODEL_LENS,
         mock_fixture=PLAYBOOK,
+        agent="playbook",
     )

@@ -49,4 +49,5 @@ async def run(
         output_model=RedirectDecision,
         model=MODEL_JUDGMENT,
         mock_fixture=REDIRECT,
+        agent="redirect",
     )

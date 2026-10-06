@@ -57,6 +57,7 @@ async def run(charter: ProgramCharter) -> RiskMap:
             output_model=RiskMap,
             model=MODEL_LENS,
             mock_fixture=RISK_MAP,
+            agent="risk_mapper.dependency_lens",
         ),
         call_agent_async(
             system=COMPLIANCE_LENS_SYSTEM,
@@ -64,6 +65,7 @@ async def run(charter: ProgramCharter) -> RiskMap:
             output_model=RiskMap,
             model=MODEL_LENS,
             mock_fixture=RISK_MAP,
+            agent="risk_mapper.compliance_lens",
         ),
     )
 
@@ -78,4 +80,5 @@ async def run(charter: ProgramCharter) -> RiskMap:
         output_model=RiskMap,
         model=MODEL_JUDGMENT,
         mock_fixture=RISK_MAP,
+        agent="risk_mapper.judge",
     )

@@ -1,2 +1,4 @@
 -r requirements.txt
+-r requirements-tracing.txt
 pytest>=8.0.0
+opentelemetry-sdk>=1.20

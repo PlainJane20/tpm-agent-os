@@ -49,4 +49,5 @@ async def run(
         output_model=ProgramStatus,
         model=MODEL_JUDGMENT,
         mock_fixture=STATUS,
+        agent="status_synthesizer",
     )
