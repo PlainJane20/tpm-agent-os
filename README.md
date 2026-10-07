@@ -13,6 +13,7 @@
 [![6-Agent Pipeline](https://img.shields.io/badge/Agents-6-6366f1?style=for-the-badge)]()
 [![Tested Offline](https://img.shields.io/badge/Tested-Offline-1baf7a?style=for-the-badge)]()
 [![MIT License](https://img.shields.io/badge/License-MIT-6b7280?style=for-the-badge)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/PlainJane20/tpm-agent-os/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/PlainJane20/tpm-agent-os/actions/workflows/ci.yml)
 
 </div>
 
