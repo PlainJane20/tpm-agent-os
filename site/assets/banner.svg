@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-labelledby="title description">
+  <title id="title">TPM Agent OS</title>
+  <desc id="description">Turning ambiguous programs into structured risk, options, and accountable decisions.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081a2a"/>
+      <stop offset="0.56" stop-color="#12354d"/>
+      <stop offset="1" stop-color="#f59e0b" stop-opacity=".72"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#7dd3fc" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#7dd3fc" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#030b13" flood-opacity=".38"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="320" rx="24" fill="url(#bg)"/>
+  <circle cx="1035" cy="55" r="230" fill="url(#glow)"/>
+  <g opacity=".16" fill="none" stroke="#7dd3fc" stroke-width="1.2" color="#7dd3fc"><circle cx="978" cy="159" r="38"/><circle cx="978" cy="159" r="86"/><path d="M978 121V73M1011 140l67-38M1011 178l67 38M945 140l-67-38M945 178l-67 38M978 197v48"/><g fill="currentColor" stroke="none"><circle cx="978" cy="73" r="7"/><circle cx="1078" cy="102" r="7"/><circle cx="1078" cy="216" r="7"/><circle cx="878" cy="102" r="7"/><circle cx="878" cy="216" r="7"/><circle cx="978" cy="245" r="7"/></g></g>
+  <g transform="translate(74 68)" filter="url(#shadow)">
+    <rect width="88" height="88" rx="22" fill="#102f45" stroke="#7dd3fc" stroke-opacity=".58"/>
+    <g fill="none" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" color="#7dd3fc"><circle cx="44" cy="44" r="12"/><circle cx="44" cy="44" r="31"/><path d="M44 13V5M44 83v-8M13 44H5M83 44h-8M22 22l-6-6M72 72l-6-6M66 22l6-6M22 66l-6 6"/><path d="M38 44l5 5 10-13" stroke-width="4"/></g>
+  </g>
+  <text x="190" y="112" fill="#ffffff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="50" font-weight="750" letter-spacing="-1">TPM Agent OS</text>
+  <text x="192" y="153" fill="#7dd3fc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2.5">STAFF TPM OPERATING SYSTEM</text>
+  <text x="75" y="225" fill="#dcebf0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21">Turning ambiguous programs into structured risk, options,</text>
+  <text x="75" y="258" fill="#dcebf0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21">and accountable decisions.</text>
+  <g transform="translate(834 168)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700"><g transform="translate(0 0)"><rect width="78" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/><text x="39" y="26" text-anchor="middle" fill="#edf7fa">6 agents</text></g><g transform="translate(88 0)"><rect width="108" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/><text x="54" y="26" text-anchor="middle" fill="#edf7fa">decision panel</text></g><g transform="translate(206 0)"><rect width="120" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".2"/><text x="60" y="26" text-anchor="middle" fill="#edf7fa">mentor playbooks</text></g></g>
+</svg>
